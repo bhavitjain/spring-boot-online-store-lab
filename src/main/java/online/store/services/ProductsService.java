@@ -7,6 +7,7 @@ import online.store.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -38,5 +39,10 @@ public class ProductsService {
 
     public List<Product> getAllProducts() {
         return productRepository.findAll();
+    }
+
+    public Product getProductById(long id) {
+        return productRepository.findById(id).orElseThrow(
+                () -> new IllegalStateException(String.format("Product with id %s doesn't exist",    id)));
     }
 }

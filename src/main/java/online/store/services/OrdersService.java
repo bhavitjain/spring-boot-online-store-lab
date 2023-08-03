@@ -16,7 +16,6 @@ public class OrdersService {
     private ProductRepository productRepository;
 
     public void placeOrder(Iterable<Order> order){
-        System.out.println("hi");
        orderRepository.saveAll(order);
     }
 }
