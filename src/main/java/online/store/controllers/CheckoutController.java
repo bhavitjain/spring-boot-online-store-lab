@@ -6,6 +6,8 @@ import online.store.model.wrappers.ProductInfo;
 import online.store.services.OrdersService;
 import online.store.services.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,8 +24,22 @@ public class CheckoutController {
     @Autowired
     private ProductsService productsService;
 
+    private static boolean isNullOrBlank(String input) {
+        return input == null || input.isEmpty() || input.trim().isEmpty();
+    }
+
     @PostMapping("/checkout")
-    public String completeCheckout(@RequestBody CheckoutRequest checkoutRequest){
+    public ResponseEntity<String> completeCheckout(@RequestBody CheckoutRequest checkoutRequest){
+        if(isNullOrBlank(checkoutRequest.getCreditCard()))
+            return new ResponseEntity<>("Credit card information is missing",
+                    HttpStatus.PAYMENT_REQUIRED);
+
+        if(isNullOrBlank(checkoutRequest.getFirstName()))
+            return new ResponseEntity<>("First name is missing", HttpStatus.BAD_REQUEST);
+
+        if(isNullOrBlank(checkoutRequest.getLastName()))
+            return new ResponseEntity<>("Last name is missing", HttpStatus.BAD_REQUEST);
+
         Set<Order> orders = new HashSet<>();
 
         for(ProductInfo info : checkoutRequest.getProducts()){
@@ -35,7 +51,7 @@ public class CheckoutController {
             orders.add(order);
         }
         ordersService.placeOrder(orders);
-        return "success";
+        return new ResponseEntity<>("success", HttpStatus.OK);
     }
 
 }
