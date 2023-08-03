@@ -32,4 +32,11 @@ public class ProductsService {
         return productRepository.findAtMostNumberOfProducts(n);
     }
 
+    public List<Product> getByCategory(String category){
+        return productRepository.findByCategory(category);
+    }
+
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
+    }
 }

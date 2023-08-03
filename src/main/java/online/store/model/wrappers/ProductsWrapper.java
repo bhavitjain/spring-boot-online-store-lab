@@ -4,10 +4,10 @@ import online.store.model.Product;
 
 import java.util.List;
 
-public class Deals {
+public class ProductsWrapper {
     private final List<Product> products;
 
-    public Deals(List<Product> products) {
+    public ProductsWrapper(List<Product> products) {
         this.products = products;
     }
 
