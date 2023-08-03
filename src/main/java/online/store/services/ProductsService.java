@@ -1,5 +1,6 @@
 package online.store.services;
 
+import online.store.model.Product;
 import online.store.model.ProductCategory;
 import online.store.repositories.ProductCategoryRepository;
 import online.store.repositories.ProductRepository;
@@ -25,6 +26,10 @@ public class ProductsService {
     public List<String> getAllSupportedCategories(){
          List<ProductCategory> categoryList = productCategoryRepository.findAll();
          return categoryList.stream().map(ProductCategory::getCategory).collect(Collectors.toList());
+    }
+
+    public List<Product> getAtMostNumberOfProducts(int n){
+        return productRepository.findAtMostNumberOfProducts(n);
     }
 
 }
