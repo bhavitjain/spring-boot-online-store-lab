@@ -2,14 +2,12 @@ package online.store.services;
 
 import online.store.model.Order;
 import online.store.repositories.OrderRepository;
-import online.store.repositories.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class OrdersService {
-    private OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
 
     private final long maxNumberOfItems;
 

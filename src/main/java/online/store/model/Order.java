@@ -1,10 +1,15 @@
 package online.store.model;
 
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
- * @author Michael Pogrebinsky - www.topdeveloperacademy.com
  * Represents an order of a product from our online store, stored in the Orders table.
  * Each order can contain multiple items of the same product
  * You do not need to modify this file

@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @author Michael Pogrebinsky - www.topdeveloperacademy.com
  * This represents an API through which we can perform CRUD operations against the
  * Products table in the database
  * You do not need to modify this file
