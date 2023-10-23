@@ -7,11 +7,9 @@ import online.store.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * @author Michael Pogrebinsky - www.topdeveloperacademy.com
  * Integrates with the database API and handles products and categories business logic
  */
 @Service

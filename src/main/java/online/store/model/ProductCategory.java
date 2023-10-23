@@ -1,9 +1,12 @@
 package online.store.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
- * @author Michael Pogrebinsky - www.topdeveloperacademy.com
  * Represents a product category stored in a database.
  * You do not need to modify this file
  */
