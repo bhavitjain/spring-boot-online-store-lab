@@ -2,20 +2,18 @@ package online.store.services;
 
 import online.store.model.Order;
 import online.store.repositories.OrderRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class OrdersService {
-    private final OrderRepository orderRepository;
+    @Autowired
+    private OrderRepository orderRepository;
 
-    private final long maxNumberOfItems;
+    @Value("${products.service.max-number-of-items:25}")
+    private long maxNumberOfItems;
 
-    public OrdersService(OrderRepository orderRepository,
-                         @Value("${products.service.max-number-of-items:25}") long maxNumberOfItems) {
-        this.orderRepository = orderRepository;
-        this.maxNumberOfItems = maxNumberOfItems;
-    }
 
     private void validateNumberOfItemsOrdered(Iterable<Order> orders) {
         long totalNumberOfItems = 0;

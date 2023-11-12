@@ -20,7 +20,7 @@ public class GlobalControllerExceptionHandler {
     }
 
     @ExceptionHandler
-    public ResponseEntity<String> defaultErrorHandler(CreditCardValidationException exception) {
+    public ResponseEntity<String> creditCardValidationExceptionHandler(CreditCardValidationException exception) {
         log.error("Exception in handling request: {}/n", exception.getMessage());
         return new ResponseEntity<>(exception.getMessage(), exception.getStatusCode());
     }
