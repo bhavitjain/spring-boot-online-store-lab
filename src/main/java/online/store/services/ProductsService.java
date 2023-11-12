@@ -4,6 +4,9 @@ import online.store.model.Product;
 import online.store.model.ProductCategory;
 import online.store.repositories.ProductCategoryRepository;
 import online.store.repositories.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,13 +17,12 @@ import java.util.stream.Collectors;
  */
 @Service
 public class ProductsService {
-    private final ProductRepository productRepository;
-    private final ProductCategoryRepository productCategoryRepository;
 
-    public ProductsService(ProductRepository productRepository, ProductCategoryRepository productCategoryRepository) {
-        this.productRepository = productRepository;
-        this.productCategoryRepository = productCategoryRepository;
-    }
+    @Autowired
+    private ProductRepository productRepository;
+
+    @Autowired
+    private ProductCategoryRepository productCategoryRepository;
 
     public List<String> getAllSupportedCategories(){
          List<ProductCategory> categoryList = productCategoryRepository.findAll();
@@ -28,7 +30,8 @@ public class ProductsService {
     }
 
     public List<Product> getAtMostNumberOfProducts(int n){
-        return productRepository.findAtMostNumberOfProducts(n);
+        Page<Product> products = productRepository.findAll(PageRequest.of(0, n));
+        return products.toList();
     }
 
     public List<Product> getByCategory(String category){
@@ -41,6 +44,6 @@ public class ProductsService {
 
     public Product getProductById(long id) {
         return productRepository.findById(id).orElseThrow(
-                () -> new IllegalStateException(String.format("Product with id %s doesn't exist",    id)));
+                () -> new IllegalStateException(String.format("Product with id %s doesn't exist", id)));
     }
 }

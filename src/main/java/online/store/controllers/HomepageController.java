@@ -31,7 +31,6 @@ public class HomepageController {
     public ProductsWrapper getProductsByCategory(@RequestParam(name = "category", required = false) String
                                                              category){
         if (category != null && !category.isEmpty()) {
-
             return new ProductsWrapper(productsService.getByCategory(category));
         }
         return new ProductsWrapper(productsService.getAllProducts());

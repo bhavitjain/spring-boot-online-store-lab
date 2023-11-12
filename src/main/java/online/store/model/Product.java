@@ -1,5 +1,9 @@
 package online.store.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +14,9 @@ import javax.persistence.Table;
  * Represents a product stored in a database in the Products table.
  * You do not need to modify this file
  */
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "Products")
 public class Product {
@@ -22,39 +29,12 @@ public class Product {
     private float priceUSD;
     private String category;
 
-    protected Product() {
-    }
-
     public Product(String name, String description, String imageFileName, float priceUSD, String category) {
         this.name = name;
         this.description = description;
         this.imageFileName = imageFileName;
         this.priceUSD = priceUSD;
         this.category = category;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getImageFileName() {
-        return imageFileName;
-    }
-
-    public float getPriceUSD() {
-        return priceUSD;
     }
 
 }

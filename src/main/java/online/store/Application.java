@@ -1,5 +1,6 @@
 package online.store;
 
+import lombok.extern.slf4j.Slf4j;
 import online.store.model.Product;
 import online.store.model.ProductCategory;
 import online.store.repositories.ProductCategoryRepository;
@@ -15,6 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @SpringBootApplication
 public class Application implements WebMvcConfigurer {
 
@@ -29,11 +31,11 @@ public class Application implements WebMvcConfigurer {
         populateInMemoryDatabaseWithData(ctx);
 
         return args -> {
-            System.out.println("Let's inspect the beans provided by Spring Boot:");
+            log.info("Let's inspect the beans provided by Spring Boot:");
             String[] beanNames = ctx.getBeanDefinitionNames();
             Arrays.sort(beanNames);
             for (String beanName : beanNames) {
-                System.out.println(beanName);
+                log.info(beanName);
             }
         };
     }

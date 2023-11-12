@@ -1,6 +1,10 @@
 package online.store.model;
 
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +18,9 @@ import javax.persistence.Table;
  * Each order can contain multiple items of the same product
  * You do not need to modify this file
  */
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "Orders")
 public class Order {
@@ -32,9 +39,6 @@ public class Order {
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
 
-    public Order() {
-    }
-
     public Order(String firstName, String lastName, String email, String shippingAddress, long quantity, Product product, String creditCard) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -43,38 +47,5 @@ public class Order {
         this.quantity = quantity;
         this.product = product;
         this.creditCard = creditCard;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public long getQuantity() {
-        return quantity;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-
-    public String getShippingAddress() {
-        return shippingAddress;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public String getCreditCard() {
-        return creditCard;
     }
 }
