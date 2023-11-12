@@ -1,5 +1,6 @@
 package online.store.controllers;
 
+import lombok.extern.slf4j.Slf4j;
 import online.store.exceptions.CreditCardValidationException;
 import online.store.model.Order;
 import online.store.model.wrappers.CheckoutRequest;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashSet;
 import java.util.Set;
 
+@Slf4j
 @RestController
 public class CheckoutController {
 
@@ -36,7 +38,7 @@ public class CheckoutController {
 
     @ExceptionHandler({CreditCardValidationException.class})
     public ResponseEntity<String> handleCreditCardError(Exception ex) {
-        System.out.println(String.format("Request to /checkout path threw an exception %s", ex.getMessage()));
+        log.info(String.format("Request to /checkout path threw an exception %s", ex.getMessage()));
         return new ResponseEntity<>("Credit card is invalid, please use another form of payment",
                 HttpStatus.BAD_REQUEST);
     }

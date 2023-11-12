@@ -1,5 +1,8 @@
 package online.store.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +13,8 @@ import javax.persistence.Table;
  * Represents a product category stored in a database.
  * You do not need to modify this file
  */
+@Getter
+@NoArgsConstructor
 @Entity
 @Table(name = "ProductCategories")
 public class ProductCategory {
@@ -19,14 +24,7 @@ public class ProductCategory {
 
     private String category;
 
-    public ProductCategory() {
-    }
-
     public ProductCategory(String category) {
         this.category = category;
-    }
-
-    public String getCategory() {
-        return category;
     }
 }
