@@ -3,7 +3,6 @@ package online.store.controllers;
 import online.store.model.Product;
 import online.store.services.ProductsService;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
